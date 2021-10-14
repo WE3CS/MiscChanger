@@ -4,7 +4,7 @@ Allowing Players to change their CS:GO miscellaneous items (Music-Kit / Coin / P
 
 ## Requirements / Dependencies:
  - [PTaH](https://github.com/komashchenko/PTaH)
- - [eItems](https://github.com/quasemago/eItems)
+ - [eItems](https://github.com/WE3CS/eItems)
 
 ## Installation:
 1. [Click Here](https://github.com/Natanel-Shitrit/MiscChanger/archive/main.zip) To download the plugin.
