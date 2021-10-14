@@ -6,8 +6,8 @@
 #pragma newdecls required
 #pragma semicolon 1
 
-#define PREFIX " \x04"... PREFIX_NO_COLOR ..."\x01"
-#define PREFIX_NO_COLOR "[MiscChanger]"
+#define PREFIX "\x04[我为C狂]"
+#define PREFIX_NO_COLOR "[我为C狂]"
 
 #define LOADOUT_POSITION_FLAIR0 55
 
@@ -499,11 +499,11 @@ public Action Command_Coins(int client, int argc)
 Menu BuildMainMenu()
 {
 	Menu mMainMenu = new Menu(MainMenuHandler);
-	mMainMenu.SetTitle("%s Browse Change-Able 'Miscellaneous' items:", PREFIX_NO_COLOR);
+	mMainMenu.SetTitle("%s 自定义个性物品:", PREFIX_NO_COLOR);
 	
-	mMainMenu.AddItem("", "• Change Your Music-Kit");
-	mMainMenu.AddItem("", "• Change Your Coin");
-	mMainMenu.AddItem("", "• Change Your Pin");
+	mMainMenu.AddItem("", "★ 音乐盒");
+	mMainMenu.AddItem("", "★ 硬币");
+	mMainMenu.AddItem("", "★ 胸章");
 	
 	return mMainMenu;
 }
@@ -566,7 +566,7 @@ void OpenMusicKitsMenu(int client, int startItem = 0, const char[] sFindMusicKit
 		{
 			case 1:
 			{
-				PrintToChat(client, "%s No Music-Kits were found!", PREFIX);
+				PrintToChat(client, "%s 没有找到该音乐盒!", PREFIX);
 			}
 			case 2:
 			{
@@ -580,7 +580,7 @@ void OpenMusicKitsMenu(int client, int startItem = 0, const char[] sFindMusicKit
 		}
 	}
 	else
-		PrintToChat(client, "%s \x0EMusic-Kits\x01 Menu is \x02Currently Unavailable\x01!", PREFIX);
+		PrintToChat(client, "%s \x0E音乐盒\x01 菜单 \x02当前不可用\x01!", PREFIX);
 }
 
 int MusicKitsMenuHandler(Menu menu, MenuAction action, int client, int param2)
@@ -600,7 +600,7 @@ int MusicKitsMenuHandler(Menu menu, MenuAction action, int client, int param2)
 					eItems_GetMusicKitDisplayNameByMusicKitNum(g_PlayerInfo[client].iMusicKitNum, sMusicKitDisplayName, MUSIC_KIT_MAX_NAME_LEN);
 				
 				// Alert him that the Music-Kit has been changed.
-				PrintToChat(client, "%s \x04Successfully\x01 changed your Music-Kit to \x02%s\x01!", PREFIX, sMusicKitDisplayName); 
+				PrintToChat(client, "%s \x03成功\x01 替换你的音乐盒为 \x02%s\x01!", PREFIX, sMusicKitDisplayName); 
 			}
 			
 			// Reopen the menu where it was.
@@ -681,7 +681,7 @@ void OpenCoinsMenu(int client, int startItem = 0, const char[] sFindCoin = "")
 			// Only the 'Reset' Button, no coins were found.
 			case 1:
 			{
-				PrintToChat(client, "%s No Coins were found!", PREFIX);
+				PrintToChat(client, "%s 没有找到该硬币!", PREFIX);
 			}
 			// Only 1 coin were found, don't bother opening the menu and automaticlly set it to the client coin.
 			case 2:
@@ -697,7 +697,7 @@ void OpenCoinsMenu(int client, int startItem = 0, const char[] sFindCoin = "")
 		}
 	}
 	else
-		PrintToChat(client, "%s \x0ECoins\x01 Menu is \x02Currently Unavailable\x01!", PREFIX);
+		PrintToChat(client, "%s \x0E硬币\x01 菜单 \x02当前不可用\x01!", PREFIX);
 }
 
 int CoinsSetsMenuHandler(Menu menu, MenuAction action, int client, int param2)
@@ -743,7 +743,7 @@ int CoinsMenuHandler(Menu menu, MenuAction action, int client, int param2)
 					eItems_GetCoinDisplayNameByDefIndex(g_PlayerInfo[client].iPinOrCoinDefIndex, sCoinDisplayName, PIN_MAX_NAME_LEN);
 				
 				// Alert him that the coin has been changed.
-				PrintToChat(client, "%s \x04Successfully\x01 changed your Coin to \x02%s\x01!", PREFIX, sCoinDisplayName); 
+				PrintToChat(client, "%s \x03成功\x01 替换你的硬币为 \x02%s\x01!", PREFIX, sCoinDisplayName); 
 			}
 				
 			BuildCoinsMenu(client, iCoinSet == -1 ? sSelectionOrStringSearch : "", iCoinSet, iCoinSet == -1 ? -1 : StringToInt(sSelectionOrStringSearch)).DisplayAt(client, menu.Selection, MENU_TIME_FOREVER);
@@ -798,7 +798,7 @@ void OpenPinsMenu(int client, int startItem = 0, const char[] sFindPin = "")
 		{
 			case 1:
 			{
-				PrintToChat(client, "%s No Pins were found!", PREFIX);
+				PrintToChat(client, "%s 没有找到该胸章!", PREFIX);
 			}
 			case 2:
 			{
@@ -812,7 +812,7 @@ void OpenPinsMenu(int client, int startItem = 0, const char[] sFindPin = "")
 		}
 	}
 	else
-		PrintToChat(client, "%s \x0EPins\x01 Menu is \x02Currently Unavailable\x01!", PREFIX);
+		PrintToChat(client, "%s \x0E胸章\x01 菜单 \x02当前不可用\x01!", PREFIX);
 }
 
 int PinsMenuHandler(Menu menu, MenuAction action, int client, int param2)
@@ -831,7 +831,7 @@ int PinsMenuHandler(Menu menu, MenuAction action, int client, int param2)
 				if(g_PlayerInfo[client].iPinOrCoinDefIndex != iPinDefIndex)
 					eItems_GetPinDisplayNameByDefIndex(g_PlayerInfo[client].iPinOrCoinDefIndex, sPinDisplayName, PIN_MAX_NAME_LEN);
 				
-				PrintToChat(client, "%s \x04Successfully\x01 changed your Pin to \x02%s\x01!", PREFIX, sPinDisplayName); // Alert him that the Pin has been changed.
+				PrintToChat(client, "%s \x03成功\x01 替换你的胸章为 \x02%s\x01!", PREFIX, sPinDisplayName); // Alert him that the Pin has been changed.
 			}
 				
 			char sFindPin[64];
@@ -909,7 +909,7 @@ void LoadGameData()
 	g_ResetMusicKitFromInventoryOffset = m_unMusicID + hGameData.GetOffset("ResetMusicKitFromInventory");
 	g_ResetCoinFromInventoryOffset = m_unMusicID + hGameData.GetOffset("ResetCoinFromInventory");
 	
-	PrintToChatAll("Offset: %d", g_ResetCoinFromInventoryOffset);
+	PrintToChatAll("取消设置: %d", g_ResetCoinFromInventoryOffset);
 	delete hGameData;
 }
 
